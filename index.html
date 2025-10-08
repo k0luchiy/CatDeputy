@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интерактивный цифровой кабинет депутата</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            // Светлая тема (Теплая)
+            'background-light': '#efefef',      // Теплый off-white
+            'card-light': '#FFFFFF',             // Чистый белый для карточек
+            'sidebar-light': '#F9F6F2',          // Как фон
+            'menu-active-light': '#EDE8E1',      // Теплый серый для активных элементов
+            'text-main-light': '#3D352F',        // Теплый темно-коричневый
+            'text-secondary-light': '#85746B',   // Теплый средний серый
+            'accent-blue-light': '#4A6C9B',      // Приглушенный синий
+            'accent-red-light': '#D9534F',       // Терракотовый красный
+            'success-light': '#28a745',
+            'warning-light': '#ffc107',
+            'error-light': '#dc3545',
+            'info-light': '#17a2b8',
+
+            // Темная тема (Нейтрально-серая)
+            'background-dark': '#121212',       // Глубокий серый
+            'card-dark': '#1E1E1E',             // Чуть светлее фон для карточек
+            'sidebar-dark': '#1E1E1E',          // Как карточки
+            'menu-active-dark': '#2C2C2C',       // Светлее серый для активных элементов
+            'text-main-dark': '#EAEAEA',         // Off-white текст
+            'text-secondary-dark': '#A0A0A0',    // Средне-серый текст
+            'accent-blue-dark': '#8AB4F8',       // Яркий синий для акцентов
+            'accent-red-dark': '#F28B82',        // Яркий красный
+            'success-dark': '#20c997',
+            'warning-dark': '#fd7e14',
+            'error-dark': '#e83e8c',
+            'info-dark': '#66d9ef',
+          },
+          boxShadow: {
+            'soft': '0 4px 12px rgba(0, 0, 0, 0.05)',
+            'soft-diffused': '0 6px 16px rgba(0, 0, 0, 0.08)',
+            'soft-top': '0 -4px 12px rgba(0, 0, 0, 0.05)',
+            'icon-glow': '0 0 15px rgba(74, 108, 155, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    // Prevents FOUC (Flash of Unstyled Content)
+    try {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      const textSize = localStorage.getItem('textSize');
+      const sizeMap = { sm: '14px', base: '16px', lg: '18px' };
+      if (textSize && sizeMap[textSize]) {
+        document.documentElement.style.fontSize = sizeMap[textSize];
+      }
+    } catch (e) {
+        console.error('Error applying theme or text size from localStorage', e);
+    }
+  </script>
+  <style type="text/tailwindcss">
+    body {
+        font-size: 1rem;
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans antialiased">
+  <div id="root"></div>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/",
+      "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.3"
+    }
+  }
+  </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
