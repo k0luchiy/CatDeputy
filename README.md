@@ -94,6 +94,12 @@ npm run build
 
 ### Шаг 2: Синхронизация с Capacitor
 
+Добавляем android в проект
+
+```bash
+npx cap add android
+```
+
 Эта команда скопирует собранные веб-ресурсы (из папки `dist`) в нативный Android-проект.
 
 ```bash
