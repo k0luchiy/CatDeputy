@@ -4,7 +4,7 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-![App Screenshot](https://imgur.com/a/hMEFUso)
+![App Screenshot](https://i.imgur.com/L3lrTWv.png)
 
 ## 📄 О проекте
 
